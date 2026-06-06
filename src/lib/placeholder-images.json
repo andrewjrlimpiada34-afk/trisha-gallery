@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "1",
+      "description": "The Beginning",
+      "imageUrl": "https://picsum.photos/seed/love1/800/1000",
+      "imageHint": "romantic couple silhouette"
+    },
+    {
+      "id": "2",
+      "description": "Our Favorite Memory",
+      "imageUrl": "https://picsum.photos/seed/love2/800/1000",
+      "imageHint": "sunset beach walk"
+    },
+    {
+      "id": "3",
+      "description": "A Small Moment",
+      "imageUrl": "https://picsum.photos/seed/love3/800/1000",
+      "imageHint": "holding hands cafe"
+    },
+    {
+      "id": "4",
+      "description": "Dreaming Together",
+      "imageUrl": "https://picsum.photos/seed/love4/800/1000",
+      "imageHint": "starry night sky"
+    }
+  ]
 }
