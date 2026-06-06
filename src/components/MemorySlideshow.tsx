@@ -20,14 +20,14 @@ export const MemorySlideshow: React.FC<MemorySlideshowProps> = ({ onClose }) => 
   const [captions, setCaptions] = useState<Record<string, string>>(
     TrishaImages.reduce<Record<string, string>>((acc, img, idx) => {
       const base = [
-        'The day everything started.',
-        'I still smile whenever I remember this.',
-        "You probably don't know how much this meant to me.",
-        'Every moment with you is a gift.',
-        'Soft moments you never forget.',
-        'Coffee, laughter, and us.',
-        'The little spark in your smile.',
-        'Just us—always.'
+        '"Some dinners fill your stomach. This one filled my heart.."',
+        '"I dont know if it was coffee or Milo, but somehow it tasted sweeter because I shared it with you."',
+        '"Just a reflection in a mirror, yet somehow all I could focus on was you."',
+        '"Another mirror photo, another reminder that my favorite view has always been you."',
+        '"Good food lasts for a meal. Good memories stay long after the plate is empty."',
+        '"The coffee eventually got cold, but your smile stayed warm the entire time."',
+        '"Wearing a uniform made for healing others, while unknowingly becoming my comfort too."',
+        '"A simple photo saved in my gallery, but one of the moments I never want to forget."'
       ]
       acc[img.id] = base[idx % base.length]
       return acc

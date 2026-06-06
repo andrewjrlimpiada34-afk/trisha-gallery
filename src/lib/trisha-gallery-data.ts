@@ -15,31 +15,31 @@ import type { ImagePlaceholder } from './placeholder-images'
 export const TrishaImages: ImagePlaceholder[] = [
   {
     id: '1',
-    description: 'The Beginning',
+    description: 'Evening Dine',
     imageUrl: (dine as unknown as StaticImageData).src,
     imageHint: 'dine moment',
   },
   {
     id: '2',
-    description: 'Our Favorite Memory',
+    description: 'Coffee na parang may Milo',
     imageUrl: (milo as unknown as StaticImageData).src,
     imageHint: 'milo memory',
   },
   {
     id: '3',
-    description: 'A Small Moment',
+    description: 'Mirror Shot pt. 1',
     imageUrl: (mirrorShot as unknown as StaticImageData).src,
     imageHint: 'mirror shot',
   },
   {
     id: '4',
-    description: 'Dreaming Together',
+    description: 'Mirror Shot pt. 2',
     imageUrl: (qt as unknown as StaticImageData).src,
     imageHint: 'qt vibe',
   },
   {
     id: '5',
-    description: 'Sweet Time',
+    description: 'TapSILOGGGG!',
     imageUrl: (tapa as unknown as StaticImageData).src,
     imageHint: 'tapa moment',
   },
@@ -51,13 +51,13 @@ export const TrishaImages: ImagePlaceholder[] = [
   },
   {
     id: '7',
-    description: 'Soft & Bright',
+    description: 'In Uniform ',
     imageUrl: (trishaWhite as unknown as StaticImageData).src,
     imageHint: 'trisha white',
   },
   {
     id: '8',
-    description: 'Just Us',
+    description: 'Selfie Shot',
     imageUrl: (trishaMain as unknown as StaticImageData).src,
     imageHint: 'trisha main',
   },
