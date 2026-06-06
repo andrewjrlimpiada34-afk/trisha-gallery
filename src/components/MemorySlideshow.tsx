@@ -1,12 +1,14 @@
 "use client"
 
-import React, { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+
 import Image from 'next/image'
 import { X, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { PlaceHolderImages } from '@/lib/placeholder-images'
-import { refineRomanticCaption } from '@/ai/flows/refine-romantic-caption'
+import { TrishaImages } from '@/lib/trisha-gallery-data'
+
 import { cn } from '@/lib/utils'
+
 
 interface MemorySlideshowProps {
   onClose: () => void
@@ -15,20 +17,32 @@ interface MemorySlideshowProps {
 export const MemorySlideshow: React.FC<MemorySlideshowProps> = ({ onClose }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isRefining, setIsRefining] = useState(false)
-  const [captions, setCaptions] = useState<Record<string, string>>({
-    "1": "The day everything started.",
-    "2": "I still smile whenever I remember this.",
-    "3": "You probably don't know how much this meant to me.",
-    "4": "Every moment with you is a gift."
-  })
+  const [captions, setCaptions] = useState<Record<string, string>>(
+    TrishaImages.reduce<Record<string, string>>((acc, img, idx) => {
+      const base = [
+        'The day everything started.',
+        'I still smile whenever I remember this.',
+        "You probably don't know how much this meant to me.",
+        'Every moment with you is a gift.',
+        'Soft moments you never forget.',
+        'Coffee, laughter, and us.',
+        'The little spark in your smile.',
+        'Just us—always.'
+      ]
+      acc[img.id] = base[idx % base.length]
+      return acc
+    }, {})
+  )
+
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % PlaceHolderImages.length)
+    setCurrentIndex((prev) => (prev + 1) % TrishaImages.length)
   }
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + PlaceHolderImages.length) % PlaceHolderImages.length)
+    setCurrentIndex((prev) => (prev - 1 + TrishaImages.length) % TrishaImages.length)
   }
+
 
   useEffect(() => {
     const timer = setInterval(nextSlide, 5000)
@@ -36,23 +50,21 @@ export const MemorySlideshow: React.FC<MemorySlideshowProps> = ({ onClose }) => 
   }, [])
 
   const handleRefine = async () => {
-    const currentImg = PlaceHolderImages[currentIndex]
+    // GenAI removed; keep UI behavior but no longer refines captions.
+    // Small delight: append a local, non-AI note.
+    const currentImg = TrishaImages[currentIndex]
+
     setIsRefining(true)
     try {
-      const result = await refineRomanticCaption({
-        caption: captions[currentImg.id],
-        context: currentImg.description
-      })
-      setCaptions(prev => ({
+      setCaptions((prev) => ({
         ...prev,
-        [currentImg.id]: result.refinedCaption
+        [currentImg.id]: `${prev[currentImg.id]} ✨`,
       }))
-    } catch (error) {
-      console.error(error)
     } finally {
       setIsRefining(false)
     }
   }
+
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 animate-in fade-in duration-500">
@@ -69,10 +81,12 @@ export const MemorySlideshow: React.FC<MemorySlideshowProps> = ({ onClose }) => 
 
       <div className="relative w-full max-w-4xl h-full flex flex-col items-center justify-center gap-8">
         <div className="relative w-full flex items-center justify-center perspective-1000">
-          {PlaceHolderImages.map((image, index) => {
+          {TrishaImages.map((image, index) => {
+
             const isCurrent = index === currentIndex
-            const isPrev = index === (currentIndex - 1 + PlaceHolderImages.length) % PlaceHolderImages.length
-            const isNext = index === (currentIndex + 1) % PlaceHolderImages.length
+            const isPrev = index === (currentIndex - 1 + TrishaImages.length) % TrishaImages.length
+            const isNext = index === (currentIndex + 1) % TrishaImages.length
+
 
             if (!isCurrent && !isPrev && !isNext) return null
 
@@ -115,7 +129,9 @@ export const MemorySlideshow: React.FC<MemorySlideshowProps> = ({ onClose }) => 
         <div className="z-40 text-center max-w-xl px-4 animate-in slide-in-from-bottom-4 duration-500 delay-300">
           <div className="glass p-6 rounded-2xl border-white/30 text-foreground/90 shadow-xl relative group">
             <p className="font-body text-lg italic leading-relaxed min-h-[3rem]">
-              {captions[PlaceHolderImages[currentIndex].id]}
+              {captions[TrishaImages[currentIndex].id]}
+
+
             </p>
             <Button
               variant="ghost"
@@ -133,7 +149,8 @@ export const MemorySlideshow: React.FC<MemorySlideshowProps> = ({ onClose }) => 
               <ChevronLeft className="h-8 w-8" />
             </Button>
             <div className="flex gap-2">
-              {PlaceHolderImages.map((_, i) => (
+              {TrishaImages.map((_, i) => (
+
                 <div
                   key={i}
                   className={cn(

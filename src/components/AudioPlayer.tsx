@@ -49,7 +49,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ isPlaying }) => {
     <div className="fixed bottom-6 right-6 z-50">
       <audio
         ref={audioRef}
-        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+        src="/musics/Taylor Swift - Lover (Instrumental).mp3"
         loop
       />
       <Button

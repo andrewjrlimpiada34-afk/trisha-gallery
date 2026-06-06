@@ -5,6 +5,7 @@ import { Sparkles } from 'lucide-react'
 import { FloatingElements } from '@/components/FloatingElements'
 import { Fireworks } from '@/components/Fireworks'
 import { MemorySlideshow } from '@/components/MemorySlideshow'
+
 import { AudioPlayer } from '@/components/AudioPlayer'
 import { Button } from '@/components/ui/button'
 
