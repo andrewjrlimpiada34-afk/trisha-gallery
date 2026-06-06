@@ -45,7 +45,7 @@ export default function Home() {
       {!showSlideshow && (
         <div className="relative z-20 flex flex-col items-center text-center px-6 animate-in fade-in zoom-in-95 duration-1000">
           <h1 className="font-headline text-4xl sm:text-6xl text-primary/80 mb-4 drop-shadow-sm italic">
-            For My Favorite Person
+            To Trisha......
           </h1>
           <p className="font-body text-lg sm:text-xl text-muted-foreground mb-12">
             A little diary made just for you ♡
@@ -61,7 +61,7 @@ export default function Home() {
               <Sparkles className="h-10 w-10 sm:h-12 sm:w-12 text-primary group-hover:scale-110 transition-transform" />
             </Button>
             <div className="mt-6 font-body text-sm tracking-widest text-primary uppercase animate-pulse">
-              Tap to Celebrate ✨
+              Tap to Access Memory Lane ✨
             </div>
           </div>
         </div>
